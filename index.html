@@ -12,9 +12,17 @@
   </head>
   <body>
     <div class="container">
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="modal-parag" class="parag">Файл не выбран</p>
+        </div>
+      </div>
       <h1 class="container-title">Чтение текста с картинки</h1>
       <form method="post" id="form-input" enctype="multipart/form-data">
-        <p id="input-parag">*изображение должно быть в формате jpg</p>
+        <p id="input-parag" class="parag">
+          *изображение должно быть в формате jpg
+        </p>
         <label class="input-file">
           <input type="file" id="imageInput" accept=".jpg" />
           <span>Выберите файл</span>

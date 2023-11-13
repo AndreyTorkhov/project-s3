@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageContainer = document.getElementById("imageContainer");
   const submitButton = document.getElementById("submitButton");
 
-  let textToType = "Саня - гей";
+  let textToType = "Текст с картинки";
   let currentIndex = 0;
   let intervalId;
 
   imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (file) {
+      outputText.textContent = "";
       const reader = new FileReader();
       reader.onload = (e) => {
         uploadedImage.src = e.target.result;
@@ -24,29 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  submitButton.addEventListener("click", () => {
-    currentIndex = 0;
-    clearInterval(intervalId);
-    intervalId = setInterval(() => {
-      if (currentIndex < textToType.length) {
-        outputText.textContent += textToType[currentIndex];
-        currentIndex++;
-      } else {
-        clearInterval(intervalId);
-      }
-    }, 100);
-  });
-
-  imageInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submitButton.click();
-    }
-  });
-
-  submitButton.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
+  submitButton.addEventListener(
+    "click",
+    () => {
       currentIndex = 0;
       clearInterval(intervalId);
       intervalId = setInterval(() => {
@@ -57,6 +38,41 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(intervalId);
         }
       }, 100);
+    },
+    { once: true }
+  );
+
+  imageInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitButton.click();
     }
+  });
+
+  submitButton.addEventListener("click", (event) => {
+    if (!imageInput.files[0]) {
+      const modal = document.getElementById("myModal");
+      if (modal.style.display === "none" || modal.style.display === "") {
+        modal.style.display = "block";
+        event.preventDefault();
+      }
+    } else {
+      currentIndex = 0;
+      clearInterval(intervalId);
+      outputText.textContent = "";
+      intervalId = setInterval(() => {
+        if (currentIndex < textToType.length) {
+          outputText.textContent += textToType[currentIndex];
+          currentIndex++;
+        } else {
+          clearInterval(intervalId);
+        }
+      }, 100);
+    }
+  });
+  const closeBtn = document.querySelector(".close");
+  closeBtn.addEventListener("click", () => {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none";
   });
 });
