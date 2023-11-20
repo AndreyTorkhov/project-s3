@@ -11,6 +11,44 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
   let intervalId;
 
+  // Функция для сохранения изображения в локальное хранилище
+  function saveImageToLocalStorage() {
+    const file = imageInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageData = e.target.result;
+        let savedImages = JSON.parse(localStorage.getItem("savedImages")) || [];
+        savedImages.push(imageData);
+        localStorage.setItem("savedImages", JSON.stringify(savedImages));
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Функция для отправки изображения на сервер
+  function sendImageToServer() {
+    const savedImage = localStorage.getItem("savedImage");
+
+    if (savedImage) {
+      fetch("/recognition", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ image: savedImage }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Обработка ответа от сервера
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error("Ошибка отправки изображения на сервер:", error);
+        });
+    }
+  }
+
   imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (file) {
@@ -49,14 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  submitButton.addEventListener("click", (event) => {
+  submitButton.addEventListener("click", () => {
     if (!imageInput.files[0]) {
       const modal = document.getElementById("myModal");
       if (modal.style.display === "none" || modal.style.display === "") {
         modal.style.display = "block";
-        event.preventDefault();
       }
     } else {
+      saveImageToLocalStorage();
+      sendImageToServer();
       currentIndex = 0;
       clearInterval(intervalId);
       outputText.textContent = "";
@@ -70,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 100);
     }
   });
+
   const closeBtn = document.querySelector(".close");
   closeBtn.addEventListener("click", () => {
     const modal = document.getElementById("myModal");
