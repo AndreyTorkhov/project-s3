@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageContainer = document.getElementById("imageContainer");
   const submitButton = document.getElementById("submitButton");
 
-  let textToType = "Текст с картинки";
   let currentIndex = 0;
   let intervalId;
 
@@ -25,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       reader.readAsDataURL(file);
     }
   }
+  let textToInput;
 
   // Функция для отправки изображения на сервер
   function sendImageToServer() {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          // Обработка ответа от сервера
+          textToInput = data;
           console.log(data);
         })
         .catch((error) => {
@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
       currentIndex = 0;
       clearInterval(intervalId);
       intervalId = setInterval(() => {
-        if (currentIndex < textToType.length) {
-          outputText.textContent += textToType[currentIndex];
+        if (currentIndex < textToInput.length) {
+          outputText.textContent += textToInput[currentIndex];
           currentIndex++;
         } else {
           clearInterval(intervalId);
@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
       clearInterval(intervalId);
       outputText.textContent = "";
       intervalId = setInterval(() => {
-        if (currentIndex < textToType.length) {
-          outputText.textContent += textToType[currentIndex];
+        if (currentIndex < textToInput.length) {
+          outputText.textContent += textToInput[currentIndex];
           currentIndex++;
         } else {
           clearInterval(intervalId);
