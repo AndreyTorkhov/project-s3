@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-const hostUrl = "/recognition'";
-
 export const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploaded, setUploaded] = useState();
@@ -20,7 +18,7 @@ export const UploadFile = () => {
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    const res = await fetch(hostUrl, {
+    const res = await fetch("http://localhost:3000/recognition", {
       method: "POST",
       body: formData,
     });
