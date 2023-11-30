@@ -3,10 +3,18 @@ import React, { useState } from "react";
 export const UploadFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploaded, setUploaded] = useState();
+  const [imageSrc, setImageSrc] = useState(null);
 
   const hadleChange = (event) => {
     console.log(event.target.files);
-    setSelectedFile(event.target.files[0]);
+    const file = event.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setImageSrc(e.target.result);
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleUpload = async () => {
@@ -18,7 +26,7 @@ export const UploadFile = () => {
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    const res = await fetch("http://localhost:3000/recognition", {
+    const res = await fetch("http://localhost:5500/recognition", {
       method: "POST",
       body: formData,
     });
@@ -28,31 +36,46 @@ export const UploadFile = () => {
   };
 
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <form method="post" id="form-input" encType="multipart/form-data">
         <p id="input-parag" className="parag">
-          *изображение должно быть в формате jpg, jpeg или pdf
+          *изображение должно быть в формате jpg, jpeg, png или pdf
         </p>
         <label className="input-file">
           <input
             type="file"
             id="imageInput"
-            accept=".jpg, .jpeg, .pdf"
+            accept=".jpg, .jpeg, .pdf, .png"
             onChange={hadleChange}
           />
           <span>Выберите файл</span>
         </label>
       </form>
+
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt="Selected"
+          style={{
+            width: "300px",
+            marginTop: "3rem",
+            marginBottom: "3rem",
+            display: "inline-block",
+            alignSelf: "center",
+            border: "1px solid",
+          }}
+        />
+      )}
+
       <button className="outputBtn" onClick={handleUpload}>
         Старт
       </button>
 
       {uploaded && (
         <div>
-          <h2>{uploaded.fileName}</h2>
-          <img src="input file" alt={uploaded.filePath} width="300" />
+          <h2>{uploaded.response}</h2>
         </div>
       )}
-    </>
+    </div>
   );
 };

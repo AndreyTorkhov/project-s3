@@ -121,6 +121,9 @@ body {
 /* кнопка старт */
 .outputBtn {
   display: inline-block;
+  align-self: center;
+  margin-top: 10px;
+  width: 12rem;
   box-sizing: border-box;
   padding: 0 15px;
   margin: 15px 15px 15px 0;
