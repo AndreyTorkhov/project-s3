@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Ml } from "./pages/Ml";
 import { Login } from "./pages/Login";
+import Register from "./pages/Register";
 
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -15,8 +16,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Ml />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/register" element={<Contact />} />
-            <Route path="*" exact={true} element={<NotFound />} /> */}
+            <Route path="/register" element={<Register />} />
+            {/* <Route path=":id" element={<UserPage />} />
+            </Route>
+
+            <Route path="*" element={<div>404... not found </div>} /> */}
           </Routes>
         </main>
         <Footer />

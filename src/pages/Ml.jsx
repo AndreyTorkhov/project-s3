@@ -10,6 +10,9 @@ function Ml() {
         <Link to={`/login`} className="btn">
           Авторизация
         </Link>
+        <Link to={`/register`} className="btn">
+          Регистрация
+        </Link>
       </div>
     </div>
   );
