@@ -53,18 +53,7 @@ export const UploadFile = () => {
       </form>
 
       {imageSrc && (
-        <img
-          src={imageSrc}
-          alt="Selected"
-          style={{
-            width: "300px",
-            marginTop: "3rem",
-            marginBottom: "3rem",
-            display: "inline-block",
-            alignSelf: "center",
-            border: "1px solid",
-          }}
-        />
+        <img className="uploadedImage" src={imageSrc} alt="Selected" />
       )}
 
       <button className="outputBtn" onClick={handleUpload}>

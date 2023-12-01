@@ -114,10 +114,36 @@ body {
   text-align: center;
 }
 .uploadedImage {
-  max-height: 300px;
+  width: 300px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   display: inline-block;
+  align-self: center;
+  border: 1px solid;
 }
 
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-name {
+  display: inline-block;
+  font-size: 10px;
+  margin: 0;
+  padding-right: 1rem;
+  color: green;
+}
+
+.login-container {
+  display: inline-block;
+  align-self: center;
+  width: 40rem;
+}
+
+.input-field {
+  min-width: 30px;
+}
 /* кнопка старт */
 .outputBtn {
   display: inline-block;
@@ -126,7 +152,6 @@ body {
   width: 12rem;
   box-sizing: border-box;
   padding: 0 15px;
-  margin: 15px 15px 15px 0;
   outline: none;
   border: none;
   border-radius: 4px;
