@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
+// import Store from "../store/store";
 
-export const UploadFile = () => {
+export default observer(function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploaded, setUploaded] = useState();
   const [imageSrc, setImageSrc] = useState(null);
@@ -27,6 +29,9 @@ export const UploadFile = () => {
     formData.append("file", selectedFile);
 
     const res = await fetch("http://localhost:5500/recognition", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token_access")}`,
+      },
       method: "POST",
       body: formData,
     });
@@ -39,13 +44,13 @@ export const UploadFile = () => {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <form method="post" id="form-input" encType="multipart/form-data">
         <p id="input-parag" className="parag">
-          *изображение должно быть в формате jpg, jpeg, png или pdf
+          *изображение должно быть в формате jpg, jpeg или png
         </p>
         <label className="input-file">
           <input
             type="file"
             id="imageInput"
-            accept=".jpg, .jpeg, .pdf, .png"
+            accept=".jpg, .jpeg, .png"
             onChange={hadleChange}
           />
           <span>Выберите файл</span>
@@ -67,4 +72,4 @@ export const UploadFile = () => {
       )}
     </div>
   );
-};
+});

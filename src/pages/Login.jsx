@@ -1,33 +1,37 @@
-import React, { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../index";
+import { observer } from "mobx-react-lite";
+import { Link, useNavigate } from "react-router-dom";
 
-function Login() {
+export default observer(function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { store } = useContext(Context);
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("http://localhost:5500/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Login successful:", data);
-        // Дополнительная логика после успешного входа, например, редирект на другую страницу
-      } else {
-        console.error("Login failed");
-        // Дополнительная логика в случае неудачного входа
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-    }
-  };
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:5500/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         email: email,
+  //         password: password,
+  //       }),
+  //     });
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log("Login successful:", data);
+  //       // Дополнительная логика после успешного входа, например, редирект на другую страницу
+  //     } else {
+  //       console.error("Login failed");
+  //       // Дополнительная логика в случае неудачного входа
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during login:", error);
+  //   }
+  // };
   return (
     <div className="row">
       <h1 className="container-title">Авторизация</h1>
@@ -57,11 +61,19 @@ function Login() {
           </div>
         </div>
       </form>
-      <button className="outputBtn" onClick={handleLogin}>
-        Вход
-      </button>
+      <Link to="/register">
+        <button className="buttonForm">
+          <span>register</span>
+        </button>
+      </Link>
+      <Link to="/">
+        <button
+          className="outputBtn"
+          onClick={() => store.login(email, password)}
+        >
+          Вход
+        </button>
+      </Link>
     </div>
   );
-}
-
-export { Login };
+});
