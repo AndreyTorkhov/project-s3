@@ -13,6 +13,11 @@ export default class Service {
     return api.post("/register", { username, email, password });
   }
 
+  //history
+  static async history() {
+    return api.get("/history");
+  }
+
   static async refresh() {
     return api.post("/refresh");
   }

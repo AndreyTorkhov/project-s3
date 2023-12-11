@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import Service from "../services/Service";
-import axios from "axios";
+// import axios from "axios";
 // import { API_URL } from "../http";
 
 export default class Store {
@@ -52,6 +52,26 @@ export default class Store {
       this.text = response.data;
     } catch (e) {
       console.log(e);
+    }
+  }
+
+  async history() {
+    try {
+      const response = await Service.history();
+      const historyData = response.data;
+      this.historyArray = historyData;
+      historyData.forEach((item) => {
+        console.log(
+          "ID:",
+          item.id,
+          "Image Path:",
+          item.image_path,
+          "Text:",
+          item.response
+        );
+      });
+    } catch (e) {
+      console.log(e.response?.data?.message);
     }
   }
 

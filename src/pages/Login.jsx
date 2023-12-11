@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default observer(function Login() {
   const [email, setEmail] = useState("");
@@ -62,8 +62,8 @@ export default observer(function Login() {
         </div>
       </form>
       <Link to="/register">
-        <button className="buttonForm">
-          <span>register</span>
+        <button className="registerBtn">
+          <span>регистрация</span>
         </button>
       </Link>
       <Link to="/">

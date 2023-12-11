@@ -19,6 +19,11 @@ body {
   background-color: #fff;
   text-shadow: 0.2px 0.2px 0.1px black;
 }
+.carousel {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
 .container {
   margin: 30px auto;
@@ -26,7 +31,7 @@ body {
   text-align: center;
 }
 
-.content {
+.carousel .container .content {
   min-height: calc(71.5vh);
   padding: -0.5rem 0;
 }
@@ -113,6 +118,40 @@ body {
   margin-top: 20px;
   text-align: center;
 }
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.prevBtn {
+  left: 30%;
+}
+
+.nextBtn {
+  right: 30%;
+}
+
 .uploadedImage {
   width: 300px;
   margin-top: 3rem;
@@ -129,7 +168,7 @@ body {
 
 .input-name {
   display: inline-block;
-  font-size: 10px;
+  font-size: 15px;
   margin: 0;
   padding-right: 1rem;
   color: green;
@@ -144,12 +183,33 @@ body {
 .input-field {
   min-width: 30px;
 }
+
+.carousel-item {
+  visibility: visible !important;
+}
+
+.registerBtn {
+  display: inline-block;
+  align-self: center;
+  min-width: 22rem;
+  color: #419152;
+  background-color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-top: 2px;
+  padding-bottom: 10px;
+  outline: none;
+  border-color: #419152;
+  border-radius: 4px;
+}
+
 /* кнопка старт */
 .outputBtn {
   display: inline-block;
   align-self: center;
   margin-top: 10px;
-  width: 12rem;
+  width: 22rem;
   box-sizing: border-box;
   padding: 0 15px;
   outline: none;
@@ -180,6 +240,7 @@ body {
 .input-file {
   position: relative;
   display: inline-block;
+  min-width: 22rem;
 }
 .input-file span {
   position: relative;

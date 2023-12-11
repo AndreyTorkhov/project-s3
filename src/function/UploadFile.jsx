@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
+import { Preloader } from "../components/Preloader";
+
 // import Store from "../store/store";
 
 export default observer(function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploaded, setUploaded] = useState();
   const [imageSrc, setImageSrc] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const hadleChange = (event) => {
     console.log(event.target.files);
@@ -27,6 +30,7 @@ export default observer(function UploadFile() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
+    setLoading(true);
 
     const res = await fetch("http://localhost:5500/recognition", {
       headers: {
@@ -38,6 +42,7 @@ export default observer(function UploadFile() {
     const data = await res.json();
 
     setUploaded(data);
+    setLoading(false);
   };
 
   return (
@@ -64,6 +69,8 @@ export default observer(function UploadFile() {
       <button className="outputBtn" onClick={handleUpload}>
         Старт
       </button>
+
+      {loading && <Preloader />}
 
       {uploaded && (
         <div>
