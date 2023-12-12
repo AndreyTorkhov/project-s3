@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Используйте useNavigate вместо useHistory
+import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
 import { observer } from "mobx-react-lite";
+import "../styles/register.css";
 
 export default observer(function Register() {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ export default observer(function Register() {
   const [passwordError, setPasswordError] = useState("");
 
   const { store } = useContext(Context);
-  const navigate = useNavigate(); // Замените useHistory на useNavigate
+  const navigate = useNavigate();
 
   const validateUsername = () => {
     if (username.length < 6) {
@@ -49,11 +50,9 @@ export default observer(function Register() {
     validatePassword();
 
     if (!usernameError && !emailError && !passwordError) {
-      // Все проверки прошли успешно, переходим на другую страницу
       store.registration(username, email, password);
-      navigate("/"); // Программный переход на главную страницу
+      navigate("/");
     } else {
-      // Выводим алерт с ошибкой
       alert("Пожалуйста, заполните форму корректно");
     }
   };

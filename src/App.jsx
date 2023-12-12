@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { Ml } from "./pages/Ml";
+import Ml from "./pages/Ml";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -17,10 +17,6 @@ function App() {
             <Route path="/" element={<Ml />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path=":id" element={<UserPage />} />
-            </Route>
-
-            <Route path="*" element={<div>404... not found </div>} /> */}
           </Routes>
         </main>
         <Footer />

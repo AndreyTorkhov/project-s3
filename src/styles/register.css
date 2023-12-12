@@ -1,0 +1,15 @@
+.registerBtn {
+  display: inline-block;
+  align-self: center;
+  min-width: 22rem;
+  color: #419152;
+  background-color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-top: 2px;
+  padding-bottom: 10px;
+  outline: none;
+  border-color: #419152;
+  border-radius: 4px;
+}

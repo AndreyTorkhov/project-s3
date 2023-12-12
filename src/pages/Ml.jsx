@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import UploadFile from "../function/UploadFile";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../index";
+import { observer } from "mobx-react-lite";
 import Service from "../services/Service";
-// import "./Ml.css"; // Подключаем стили
+import "../styles/ml.css";
 
-function Ml() {
+export default observer(function Ml() {
   const { store } = useContext(Context);
   const navigation = useNavigate();
   const [historyArray, setHistoryArray] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [carouselVisible, setCarouselVisible] = useState(false); // Состояние видимости карусели
 
   const fetchHistory = async () => {
     try {
@@ -39,38 +41,43 @@ function Ml() {
     );
   };
 
+  const showHistory = () => {
+    setCarouselVisible(true);
+  };
+
   return (
     <div className="container-history">
       <h1 className="container-title">Чтение текста с картинки</h1>
       <UploadFile />
-      <div className="carousel" style={{ position: "relative" }}>
-        {historyArray.map((item, index) => (
-          <div
-            key={item.id}
-            className={`carousel-item ${
-              index === currentIndex ? "active" : ""
-            }`}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translateX(-50%) translateY(-50%)",
-            }}
-            href={`/${item.image_path}`}
-          >
-            {/* <img alt={item.response} /> */}
-            <h5>{item.response}</h5>
+      {!carouselVisible && (
+        <button className="historyBtn" onClick={showHistory}>
+          Показать историю
+        </button>
+      )}
+      {carouselVisible && (
+        <>
+          <h3 className="carousel-title">Прошлые запросы</h3>
+          <div className="carousel">
+            {historyArray.map((item, index) => (
+              <div
+                key={item.id}
+                className={`carousel-item ${
+                  index === currentIndex ? "active" : ""
+                }`}
+                href={`/${item.image_path}`}
+              >
+                <h5 className="carousel-text">{item.response}</h5>
+              </div>
+            ))}
+            <button className="prevBtn btn" onClick={prevSlide}>
+              Назад
+            </button>
+            <button className="nextBtn btn" onClick={nextSlide}>
+              Вперед
+            </button>
           </div>
-        ))}
-      </div>
-      <button className="prevBtn btn" onClick={prevSlide}>
-        Назад
-      </button>
-      <button className="nextBtn btn" onClick={nextSlide}>
-        Вперед
-      </button>
+        </>
+      )}
     </div>
   );
-}
-
-export { Ml };
+});

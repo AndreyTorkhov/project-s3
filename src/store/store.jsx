@@ -1,7 +1,5 @@
 import { makeAutoObservable } from "mobx";
 import Service from "../services/Service";
-// import axios from "axios";
-// import { API_URL } from "../http";
 
 export default class Store {
   user = {};
@@ -40,7 +38,6 @@ export default class Store {
       localStorage.setItem("token_access", response.data.access_token);
       localStorage.setItem("token_refresh", response.data["refresh token"]);
       this.setAuth(true);
-      // this.setUser(response.data.user);
     } catch (e) {
       console.log(e.response?.data?.message);
     }
@@ -81,7 +78,6 @@ export default class Store {
       localStorage.setItem("token_access", response.data.access_token);
       localStorage.setItem("token_refresh", response.data.refresh_token);
       this.setAuth(true);
-      // this.setUser(response.data.user);
     } catch (e) {
       console.log(e.response?.data?.message);
     }

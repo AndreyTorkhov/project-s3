@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { Preloader } from "../components/Preloader";
-
-// import Store from "../store/store";
+import { API_URL } from "../config";
 
 export default observer(function UploadFile() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -32,7 +31,7 @@ export default observer(function UploadFile() {
     formData.append("file", selectedFile);
     setLoading(true);
 
-    const res = await fetch("http://localhost:5500/recognition", {
+    const res = await fetch(`${API_URL}recognition`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token_access")}`,
       },
@@ -46,7 +45,7 @@ export default observer(function UploadFile() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="upload-form">
       <form method="post" id="form-input" encType="multipart/form-data">
         <p id="input-parag" className="parag">
           *изображение должно быть в формате jpg, jpeg или png
@@ -62,9 +61,11 @@ export default observer(function UploadFile() {
         </label>
       </form>
 
-      {imageSrc && (
-        <img className="uploadedImage" src={imageSrc} alt="Selected" />
-      )}
+      <div className="image-container">
+        {imageSrc && (
+          <img className="uploadedImage" src={imageSrc} alt="Selected" />
+        )}
+      </div>
 
       <button className="outputBtn" onClick={handleUpload}>
         Старт
@@ -74,7 +75,7 @@ export default observer(function UploadFile() {
 
       {uploaded && (
         <div>
-          <h2>{uploaded.response}</h2>
+          <h2 className="outputText">{uploaded.response}</h2>
         </div>
       )}
     </div>

@@ -14,21 +14,10 @@ body {
   color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;
-  height: 100vh;
+  min-height: 100vh;
   overscroll-behavior-y: none;
   background-color: #fff;
   text-shadow: 0.2px 0.2px 0.1px black;
-}
-.carousel {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}
-
-.container {
-  margin: 30px auto;
-  width: 80%;
-  text-align: center;
 }
 
 .carousel .container .content {
@@ -36,188 +25,31 @@ body {
   padding: -0.5rem 0;
 }
 
-.loading {
-  margin-top: 10px;
-  display: inline-block;
-}
-
-.loading span {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  background-color: #333;
-  border-radius: 50%;
-  margin-right: 5px;
-  animation: loading-animation 0.6s infinite alternate;
-}
-
-@keyframes loading-animation {
-  to {
-    opacity: 0.3;
-    transform: translateY(-5px);
-  }
-}
-
-.modal {
-  z-index: 2;
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.close {
-  position: absolute;
-  font-size: 30px;
-  top: -15px;
-  right: 0;
-  padding: 5px;
-  cursor: pointer;
-}
-
 .container-title {
   font-size: 5rem;
   text-align: center;
 }
 
-#form-input {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#modal-parag {
-  font-size: 30px;
-}
-
-.parag {
-  font-size: 12px;
-  padding: 5px;
-}
-
-#outputText {
-  margin-top: 15px;
-  font-size: 18px;
-}
-#imageContainer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.carousel {
-  display: flex;
-  overflow: hidden;
+/* везде свой */
+.page-footer {
+  margin-top: auto;
   width: 100%;
 }
 
-.carousel-item {
-  flex: 0 0 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-item.active {
-  opacity: 1;
-}
-
-.prevBtn,
-.nextBtn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.prevBtn {
-  left: 30%;
-}
-
-.nextBtn {
-  right: 30%;
-}
-
-.uploadedImage {
-  width: 300px;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  display: inline-block;
-  align-self: center;
-  border: 1px solid;
-}
-
-.row {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-name {
-  display: inline-block;
-  font-size: 15px;
-  margin: 0;
-  padding-right: 1rem;
-  color: green;
-}
-
-.login-container {
-  display: inline-block;
-  align-self: center;
-  width: 40rem;
-}
-
-.input-field {
-  min-width: 30px;
-}
-
-.carousel-item {
-  visibility: visible !important;
-}
-
-.registerBtn {
-  display: inline-block;
-  align-self: center;
-  min-width: 22rem;
-  color: #419152;
-  background-color: #fff;
-  font-size: 32px;
-  font-weight: 500;
-  box-sizing: border-box;
-  padding-top: 2px;
-  padding-bottom: 10px;
-  outline: none;
-  border-color: #419152;
-  border-radius: 4px;
-}
-
-/* кнопка старт */
 .outputBtn {
   display: inline-block;
   align-self: center;
-  margin-top: 10px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   width: 22rem;
   box-sizing: border-box;
-  padding: 0 15px;
+  padding: 0 1.5rem;
   outline: none;
   border: none;
-  border-radius: 4px;
-  height: 50px;
-  line-height: 36px;
-  font-size: 32px;
+  border-radius: 0.4rem;
+  height: 5rem;
+  line-height: 3.6rem;
+  font-size: 3.2rem;
   font-weight: 500;
   color: #fff;
   background-color: #419152;
@@ -236,38 +68,9 @@ body {
 .outputBtn:active {
   background-color: #419152 !important;
 }
-/* Вставка файла */
-.input-file {
-  position: relative;
-  display: inline-block;
-  min-width: 22rem;
-}
-.input-file span {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none;
-  font-size: 32px;
-  font-weight: 500;
-  vertical-align: middle;
-  color: rgb(255 255 255);
+
+.container {
+  margin: 3rem auto;
+  width: 80%;
   text-align: center;
-  border-radius: 4px;
-  background-color: #419152;
-  line-height: 22px;
-  height: 50px;
-  padding: 15px 20px;
-  box-sizing: border-box;
-  border: none;
-  margin: 0;
-  transition: background-color 0.2s;
-}
-.input-file input[type="file"] {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-  display: block;
-  width: 0;
-  height: 0;
 }
