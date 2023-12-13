@@ -23,8 +23,8 @@
 }
 
 .parag {
-  font-size: 12px;
-  padding: 5px;
+  font-size: 1.2rem;
+  padding: 0.5rem;
 }
 
 .outputText {
@@ -44,16 +44,16 @@
   cursor: pointer;
   outline: none;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 500;
   vertical-align: middle;
   color: rgb(255 255 255);
   text-align: center;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   background-color: #419152;
-  line-height: 22px;
-  height: 50px;
-  padding: 15px 20px;
+  line-height: 2.2rem;
+  height: 5rem;
+  padding: 1.5rem 2rem;
   box-sizing: border-box;
   border: none;
   margin: 0;
@@ -69,7 +69,7 @@
 }
 
 .uploadedImage {
-  width: 300px;
+  width: 30rem;
   margin-top: 3rem;
   margin-bottom: 2rem;
   display: inline-block;
