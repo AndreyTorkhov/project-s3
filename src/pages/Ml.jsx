@@ -11,7 +11,7 @@ export default observer(function Ml() {
   const navigation = useNavigate();
   const [historyArray, setHistoryArray] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [carouselVisible, setCarouselVisible] = useState(false); // Состояние видимости карусели
+  const [carouselVisible, setCarouselVisible] = useState(false);
 
   const fetchHistory = async () => {
     try {
@@ -44,6 +44,14 @@ export default observer(function Ml() {
   const showHistory = () => {
     setCarouselVisible(true);
   };
+
+  useEffect(() => {
+    if (carouselVisible) {
+      document.querySelector(".container").classList.add("with-carousel");
+    } else {
+      document.querySelector(".container").classList.remove("with-carousel");
+    }
+  }, [carouselVisible]);
 
   return (
     <div className="container-history">

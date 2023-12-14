@@ -133,15 +133,39 @@
 .prevBtn {
   left: 20%;
 }
+@media (max-width: 1200px) {
+  .prevBtn {
+    left: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .prevBtn {
+    left: 0;
+  }
+}
 
 .nextBtn {
   right: 20%;
+}
+
+@media (max-width: 1200px) {
+  .nextBtn {
+    right: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .nextBtn {
+    right: 0;
+  }
 }
 
 .progress {
   width: 30% !important;
   padding: 0.3rem !important;
   margin: 0 auto !important;
+  margin-bottom: 0.8rem !important;
 }
 
 .historyBtn {

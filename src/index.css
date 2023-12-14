@@ -9,6 +9,12 @@ html {
   box-sizing: border-box;
 }
 
+@media (max-width: 1200px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 @media (max-width: 600px) {
   html {
     font-size: 40%;
@@ -16,6 +22,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: "Manrope", sans-serif;
   color: var(--color-light--2);
   font-weight: 400;
@@ -32,11 +40,26 @@ body {
   text-align: center;
   position: relative;
   min-height: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 80%;
+  }
+}
+
+.container.with-carousel {
+  padding-bottom: 100px;
+}
+
+.container.without-carousel {
+  padding-bottom: 96px;
 }
 
 .carousel .container .content {
-  min-height: calc(71.5vh);
-  padding: -0.5rem 0;
+  min-height: calc(100vh - 96px);
+  margin-bottom: 96px;
 }
 
 .container-title {
@@ -45,11 +68,11 @@ body {
 }
 
 .page-footer {
-  margin-top: auto;
-  width: 100%;
-  position: absolute;
+  padding: 10px;
+  position: fixed;
   left: 0;
-  bottom: -10rem;
+  bottom: 0;
+  width: 100%;
 }
 
 .outputBtn {
