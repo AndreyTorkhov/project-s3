@@ -1,0 +1,185 @@
+.upload-form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+.upload-form .image-container {
+  min-height: 15rem;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.uploadedImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#form-input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.parag {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.outputText {
+  padding-bottom: 2rem;
+}
+
+.input-file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 22rem;
+}
+.input-file span {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 3.2rem;
+  font-weight: 500;
+  vertical-align: middle;
+  color: rgb(255 255 255);
+  text-align: center;
+  border-radius: 0.4rem;
+  background-color: #419152;
+  line-height: 2.2rem;
+  height: 5rem;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  transition: background-color 0.2s;
+}
+.input-file input[type="file"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.uploadedImage {
+  width: 30rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  align-self: center;
+  border: 1px solid;
+}
+
+.carousel-title {
+  margin-top: 5rem;
+  margin-bottom: -3rem;
+  font-size: 3rem;
+}
+
+.carousel {
+  position: relative !important;
+  display: flex;
+  height: 15rem !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  opacity: 0;
+  width: 20rem !important;
+  height: auto !important;
+  min-height: 1rem;
+  transition: opacity 0.5s ease-in-out !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-50%) !important;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-item {
+  visibility: visible !important;
+}
+
+@keyframes loading-animation {
+  to {
+    opacity: 0.3;
+    transform: translateY(-5px);
+  }
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.prevBtn {
+  left: 20%;
+}
+@media (max-width: 1200px) {
+  .prevBtn {
+    left: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .prevBtn {
+    left: 0;
+  }
+}
+
+.nextBtn {
+  right: 20%;
+}
+
+@media (max-width: 1200px) {
+  .nextBtn {
+    right: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+  .nextBtn {
+    right: 0;
+  }
+}
+
+.progress {
+  width: 30% !important;
+  padding: 0.3rem !important;
+  margin: 0 auto !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.historyBtn {
+  display: inline-block;
+  align-self: center;
+  min-width: 22rem;
+  color: #419152;
+  background-color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  box-sizing: border-box;
+  padding-top: 0.2rem;
+  padding-bottom: 0.5rem;
+  outline: none;
+  border-color: #419152;
+  border-radius: 4px;
+}
