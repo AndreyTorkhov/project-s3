@@ -9,6 +9,15 @@ export default observer(function Login() {
   const [password, setPassword] = useState("");
   const { store } = useContext(Context);
 
+  const handleLogin = () => {
+    if (!email || !password) {
+      alert("Пожалуйста, заполните все поля");
+      return;
+    }
+
+    store.login(email, password);
+  };
+
   return (
     <div className="row">
       <h1 className="container-title">Авторизация</h1>
@@ -44,10 +53,7 @@ export default observer(function Login() {
         </button>
       </Link>
       <Link to="/">
-        <button
-          className="outputBtn"
-          onClick={() => store.login(email, password)}
-        >
+        <button className="outputBtn" onClick={handleLogin}>
           Вход
         </button>
       </Link>

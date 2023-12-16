@@ -45,6 +45,11 @@ export default observer(function Register() {
   };
 
   const handleRegistration = () => {
+    if (!username || !email || !password) {
+      alert("Пожалуйста, заполните все поля");
+      return;
+    }
+
     validateUsername();
     validateEmail();
     validatePassword();
